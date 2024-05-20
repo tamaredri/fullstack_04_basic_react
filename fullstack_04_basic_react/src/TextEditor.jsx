@@ -18,7 +18,12 @@ function TextEditor(){
 
     const [text, setText] = useState([]);
     function keyPressedHandler(event){
-        let val ={letter: event.target.textContent, color: selectedColor , font: selectedFont, size:selectedSize+'px'};
+        let val ={
+          letter: event.target.textContent, 
+          color: selectedColor, 
+          font: selectedFont, 
+          size:`${selectedSize}px`};
+
        
         if(val.letter === '←'){
             setText(t => t.slice(0, -1));
@@ -27,14 +32,16 @@ function TextEditor(){
         }
     }
   
+
   
     return (
       <>
         <TextArea newChar={text}/>
         <button onClick={handleClick}>{languages[(languageId+1)%3]}</button>
         <KeyBoard lang={languages[languageId]} onKeyPressed={keyPressedHandler}/>
-        <Designer onSelectedColorChange={setSelectedColor}
-                  onSelectedFontChange ={setSelectedFont}
+
+        <Designer selectedColor={selectedColor} onSelectedColorChange={setSelectedColor}
+                  selectedFont={selectedFont} onSelectedFontChange ={setSelectedFont}
                   onSelectedSizeChange={setSelectedSize} selectedSize={selectedSize} />
       </>
     )
