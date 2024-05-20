@@ -9,10 +9,8 @@ function ColorSelector(props) {
    
     return (
         <div>
-            <label htmlFor="colorPicker" />
             <input
                 type="color"
-                id="colorPicker"
                 value={props.selectedColor}
                 onChange={handleColorChange}/>
         </div>

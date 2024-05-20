@@ -7,12 +7,20 @@ function Designer(props) {
    
     return (
         <div>
-           <FontSelector selectedFont={props.selectedFont} onSelectedFontChange={props.onSelectedFontChange}/>
-            <ColorSelector selectedColor={props.selectedColor}  onSelectedColorChange={props.onSelectedColorChange} />
-            <SizeSelector selectedSize={props.selectedSize} onSelectedSizeChange={props.onSelectedSizeChange} />
+            <FontSelector 
+            selectedFont={props.selectedFont} 
+            onSelectedFontChange={props.onSelectedFontChange}
+            />
 
-            {/* <SizeSelector>
-            </SizeSelector> */}
+            <ColorSelector 
+            selectedColor={props.selectedColor}  
+            onSelectedColorChange={props.onSelectedColorChange} 
+            />
+            
+            <SizeSelector 
+            selectedSize={props.selectedSize} 
+            onSelectedSizeChange={props.onSelectedSizeChange} 
+            />
 
         </div>
         

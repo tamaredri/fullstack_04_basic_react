@@ -9,7 +9,7 @@ function SizeSelector(props) {
     }
 
     return (
-        <div style={{margin: '10px'}}>
+        <div>
             <button onClick={plusClickHandle}>+</button>
             <input type="number" 
             value={props.selectedSize} 

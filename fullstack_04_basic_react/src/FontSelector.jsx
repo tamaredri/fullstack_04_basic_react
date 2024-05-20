@@ -9,8 +9,9 @@ function FontSelector(props) {
    
     return (
           <div>
-            <label htmlFor="fontPicker"></label>
-            <select id="fontPicker" value={props.selectedFont} onChange={handleFontChange}>
+            <select
+            value={props.selectedFont} 
+            onChange={handleFontChange}>
                 <option value="Arial">Arial</option>
                 <option value="Courier New">Courier New</option>
                 <option value="Georgia">Georgia</option>

@@ -6,12 +6,10 @@ function KeysRow(props){
 
     return (
         <li>
-            <div>
-                {props.keys.map((k, index) => 
-                <Character key={index} 
-                           char={k} 
-                           onCharacterClick={props.onKeyPressed}/>)}
-            </div>
+            {props.keys.map((k, index) => 
+            <Character key={index} 
+                        char={k} 
+                        onCharacterClick={props.onKeyPressed}/>)}
         </li>
     )
 }
