@@ -6,22 +6,19 @@ import Designer from './Designer';
 function TextEditor(){
     const [languageId, setLanguageId] = useState(0);   
     const languages = ['english', 'עברית', '.?123'];
+
     const [selectedColor, setSelectedColor] = useState('black'); 
     const [selectedFont, setSelectedFont] = useState('Ariel'); 
-    const [selectedSize, setSelectedSize] = useState('16px'); 
-    //const selectedColor = 'blue';
-    //const selectedFont='Ariel';
-    //const selectedSize='16px';
+    const [selectedSize, setSelectedSize] = useState(16); 
 
     function handleClick(){
       setLanguageId(currentId => (currentId + 1 ) % 3);
     }
 
-    const [text, setText] = useState([]);
 
+    const [text, setText] = useState([]);
     function keyPressedHandler(event){
-        let val ={letter: event.target.textContent, color: selectedColor , font: selectedFont, size:selectedSize};
-       
+        let val ={letter: event.target.textContent, color: selectedColor , font: selectedFont, size:selectedSize+'px'};
        
         if(val.letter === '←'){
             setText(t => t.slice(0, -1));
@@ -36,7 +33,9 @@ function TextEditor(){
         <TextArea newChar={text}/>
         <button onClick={handleClick}>{languages[(languageId+1)%3]}</button>
         <KeyBoard lang={languages[languageId]} onKeyPressed={keyPressedHandler}/>
-        <Designer onSelectedColorChange={setSelectedColor} onSelectedFontChange ={setSelectedFont} onSelectedSizeChange={setSelectedSize} />
+        <Designer onSelectedColorChange={setSelectedColor}
+                  onSelectedFontChange ={setSelectedFont}
+                  onSelectedSizeChange={setSelectedSize} selectedSize={selectedSize} />
       </>
     )
 }
