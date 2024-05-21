@@ -13,6 +13,7 @@ function TextEditor(){
     const [isBoldSelected, setIsBoldSelected] = useState(false);
     const [isSelectedItalic, setSelectedItalic] = useState(false);
     const [ isUnderlineSelected,  setSelectedUnderline] = useState(false);
+    const [history, setHistory] = useState([]);
 
     const [text, setText] = useState([]);
     function keyPressedHandler(event){
@@ -28,11 +29,14 @@ function TextEditor(){
 
        
         if(val.letter === '←'){
+          setHistory([...history, text]);
             setText(t => t.slice(0, -1));
         } else if(val.letter === '🗑'){
+          setHistory([...history, text]);
           setText([]);
         } 
         else if(val.letter === '🧹'){
+          setHistory([...history, text]);
           setText(t => t.map(char => ({ letter: char.letter, color: selectedColor, font: selectedFont, 
             size:`${selectedSize}px`,
             fontWeight: isBoldSelected ? 'bold' : 'normal',
@@ -40,12 +44,15 @@ function TextEditor(){
             textDecoration: isUnderlineSelected ? 'underline' : 'none'})));
         }
        else if(val.letter === '⬆'){
+        setHistory([...history, text]);
         setText(t => t.map(char => ({ ...char, letter: char.letter.toUpperCase() })));
       } 
       else if(val.letter === '⬇'){
+        setHistory([...history, text]);
         setText(t => t.map(char => ({ ...char, letter: char.letter.toLowerCase() })));
       } 
         else{
+            setHistory([...history, text]);
             setText(t => [...t, val]);
         }
     }
@@ -54,12 +61,20 @@ function TextEditor(){
       setLanguageId(currentId => (currentId + 1 ) % 4);
     }  
 
+    function undoLastChange() {
+      if (history.length > 0) {
+          setText(history[history.length - 1]); // Restore the last state from history
+          setHistory(history.slice(0, -1)); // Remove the last state from history
+      }
+    }
+
 
     return (
       <>
         <TextArea newChar={text}/>
 
         <button onClick={handleLangClick}>{languages[(languageId+1) % 4]}</button>
+        <button onClick={undoLastChange}>🔙</button>
        
         <KeyBoard lang={languages[languageId]} onKeyPressed={keyPressedHandler}/>
 
