@@ -12,6 +12,7 @@ function TextEditor(){
     const [selectedSize, setSelectedSize] = useState(16); 
     const [isBoldSelected, setIsBoldSelected] = useState(false);
     const [isSelectedItalic, setSelectedItalic] = useState(false);
+    const [ isUnderlineSelected,  setSelectedUnderline] = useState(false);
 
     const [text, setText] = useState([]);
     function keyPressedHandler(event){
@@ -21,7 +22,8 @@ function TextEditor(){
           font: selectedFont, 
           size:`${selectedSize}px`,
           fontWeight: isBoldSelected ? 'bold' : 'normal',
-          fontStyle: isSelectedItalic ? 'italic' : 'normal'
+          fontStyle: isSelectedItalic ? 'italic' : 'normal',
+          textDecoration: isUnderlineSelected ? 'underline' : 'none'
         };
 
        
@@ -49,7 +51,8 @@ function TextEditor(){
                   selectedFont={selectedFont} onSelectedFontChange ={setSelectedFont}
                   onSelectedSizeChange={setSelectedSize} selectedSize={selectedSize} 
                   isBold={isBoldSelected} onBoldChange={setIsBoldSelected}
-                  isSelectedItalic={isSelectedItalic} onSelectedItalicChange={setSelectedItalic} />
+                  isSelectedItalic={isSelectedItalic} onSelectedItalicChange={setSelectedItalic} 
+                  isUnderlineSelected ={isUnderlineSelected} onSelectedUnderlineChange={setSelectedUnderline}  />
       </>
     )
 }

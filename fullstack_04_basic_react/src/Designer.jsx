@@ -4,6 +4,7 @@ import ColorSelector from './ColorSelector';
 import FontSelector from './FontSelector';
 import BoldSelector from './BoldSelector';
 import ItalicSelector from './ItalicSelector';
+import UnderlineSelector from './assets/UnderlineSelector';
 
 function Designer(props) {
    
@@ -32,6 +33,11 @@ function Designer(props) {
             <ItalicSelector 
             isItalic={props.isSelectedItalic}
             onSelectedItalicChange={props.onSelectedItalicChange}
+            />
+
+            <UnderlineSelector
+            isUnderline={props.isUnderlineSelected}
+            onSelectedUnderlineChange={props.onSelectedUnderlineChange}         
             />
         </div>
         
