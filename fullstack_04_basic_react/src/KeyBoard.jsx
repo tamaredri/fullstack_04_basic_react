@@ -15,16 +15,19 @@ function KeyBoard(props){
                     ['@', '#', '$', '&', '*', '(', ')', '\'', '\"'],
                     ['%', '_', '+', '=', '/', ';', ':', '!', '?', ',', '.']];
 
-    const emoji = [[],[],[]];
+    const emoji = [['😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😆', '😉', '😊'],
+                    ['😋', '😎', '😍', '😘', '🥰', '😗', '😙', '😚', '🙂'],
+                    ['🤗', '🤩', '🤔', '🤨', '😐', '😥', '😪', '😴', '🤐', '😏', '😮']];
 
-    const actions = [['↩', '—', '←', '🚮']];
+    const actions = [['↩', '—', '←', '🗑', '🧹', '⬆', '⬇']];
 
     return (
         <>
             <ul className={classes.KeyBoard}>
                 {props.lang === 'english' ? english.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>):
                 (props.lang === 'עברית'? hebrew.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>) :
-                special.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>))}
+                (props.lang === '😀'? emoji.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>) :
+                special.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>)))}
                 {actions.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>)}
             </ul>
         </>
