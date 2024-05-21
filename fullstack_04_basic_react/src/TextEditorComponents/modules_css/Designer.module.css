@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
+    margin-top: 10px;
 }
 
 .Selector{
@@ -23,8 +24,8 @@
 
 .SizeChangeBtn{
     width: 40px;
-    height: 30px;
+    height: 100%;
     padding: 0px;
-    margin: 1px;
+    margin: 3px;
     text-align: center;
 }

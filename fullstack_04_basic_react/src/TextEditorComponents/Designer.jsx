@@ -5,7 +5,7 @@ import FontSelector from './FontSelector';
 import BoldSelector from './BoldSelector';
 import ItalicSelector from './ItalicSelector';
 import UnderlineSelector from './UnderlineSelector';
-import classes from './Designer.module.css';
+import classes from './modules_css/Designer.module.css';
 
 function Designer(props) {
    

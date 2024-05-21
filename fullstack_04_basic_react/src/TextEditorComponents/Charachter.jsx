@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './KeyBoard.module.css';
+import classes from './modules_css/KeyBoard.module.css';
 
 function Character(props){
     return (

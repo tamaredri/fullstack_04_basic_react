@@ -1,6 +1,6 @@
 import React from 'react';
 import Character from './Charachter';
-import classes from './KeyBoard.module.css';
+import classes from './modules_css/KeyBoard.module.css';
 
 function KeysRow(props){
 

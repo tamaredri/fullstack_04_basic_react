@@ -1,6 +1,6 @@
 import React from 'react';
 import KeysRow from './KeysRow';
-import classes from './KeyBoard.module.css';
+import classes from './modules_css/KeyBoard.module.css';
 
 function KeyBoard(props){
     const hebrew = [['ק', 'ר', 'א', 'ט', 'ו', 'ן', 'ם', 'פ'], 
@@ -19,19 +19,26 @@ function KeyBoard(props){
                     ['😋', '😎', '😍', '😘', '🥰', '😗', '😙', '😚', '🙂'],
                     ['🤗', '🤩', '🤔', '🤨', '😐', '😥', '😪', '😴', '🤐', '😏', '😮']];
 
-    const actions = [['↩', '—', '←', '🗑', '🧹', '⬆', '⬇']];
+    const actions = [['↩', '—', '←'],[ '🗑', '🧹', '⬆', '⬇']];
+
+    function createRow(index, l) {
+        return <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed} />;
+    }
 
     return (
         <>
             <ul className={classes.KeyBoard}>
-                {props.lang === 'english' ? english.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>):
-                (props.lang === 'עברית'? hebrew.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>) :
-                (props.lang === '😀'? emoji.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>) :
-                special.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>)))}
-                {actions.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>)}
+                {props.lang === 'english' ? english.map((l, index) => createRow(index, l)):
+                (props.lang === 'עברית'? hebrew.map((l, index) => createRow(index, l)) :
+                (props.lang === '😀'? emoji.map((l, index) => createRow(index, l)) :
+                special.map((l, index) => createRow(index, l))))}
+                
+                {actions.map((l, index) => createRow(index, l))}
             </ul>
         </>
     )
+
+
 }
 
 export default KeyBoard;

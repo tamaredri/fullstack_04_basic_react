@@ -2,7 +2,7 @@ import {useState} from 'react';
 import KeyBoard from './KeyBoard';
 import TextArea from './TextArea';
 import Designer from './Designer';
-import classes from './TextEditor.module.css';
+import classes from './modules_css/TextEditor.module.css';
 
 function TextEditor(){
     const [languageId, setLanguageId] = useState(0);   
@@ -10,7 +10,7 @@ function TextEditor(){
     
     const [selectedColor, setSelectedColor] = useState('#000000'); 
     const [selectedFont, setSelectedFont] = useState('Ariel'); 
-    const [selectedSize, setSelectedSize] = useState(16); 
+    const [selectedSize, setSelectedSize] = useState(30); 
     const [isBoldSelected, setIsBoldSelected] = useState(false);
     const [isSelectedItalic, setSelectedItalic] = useState(false);
     const [ isUnderlineSelected,  setSelectedUnderline] = useState(false);
@@ -74,17 +74,19 @@ function TextEditor(){
       <div className={classes.TextEditoeContainer}>
         <TextArea newChar={text}/>
 
-        <button onClick={handleLangClick}>{languages[(languageId+1) % 4]}</button>
-        <button onClick={undoLastChange}>🔙</button>
-       
-        <KeyBoard lang={languages[languageId]} onKeyPressed={keyPressedHandler}/>
-
         <Designer selectedColor={selectedColor} onSelectedColorChange={setSelectedColor}
                   selectedFont={selectedFont} onSelectedFontChange ={setSelectedFont}
                   onSelectedSizeChange={setSelectedSize} selectedSize={selectedSize} 
                   isBold={isBoldSelected} onBoldChange={setIsBoldSelected}
                   isSelectedItalic={isSelectedItalic} onSelectedItalicChange={setSelectedItalic}
                   isUnderlineSelected ={isUnderlineSelected} onSelectedUnderlineChange={setSelectedUnderline}  />
+
+        <div className={classes.FlexDisplay}>
+          <button onClick={handleLangClick}>{languages[(languageId+1) % 4]}</button>
+          <button onClick={undoLastChange}>🔙</button>
+        </div>
+        <KeyBoard lang={languages[languageId]} onKeyPressed={keyPressedHandler}/>
+
         </div>
       
     )

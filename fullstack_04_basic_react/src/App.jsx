@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import TextEditor from './TextEditor'
+import TextEditor from './TextEditorComponents/TextEditor'
 
 function App() {
   return (

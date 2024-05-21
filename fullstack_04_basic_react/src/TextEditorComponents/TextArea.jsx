@@ -1,4 +1,4 @@
-import classes from './TextEditor.module.css';
+import classes from './modules_css/TextEditor.module.css';
 
 function TextArea(props) {
    
