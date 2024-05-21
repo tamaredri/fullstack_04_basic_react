@@ -2,6 +2,7 @@ import React from 'react';
 import SizeSelector from './SizeSelector';
 import ColorSelector from './ColorSelector';
 import FontSelector from './FontSelector';
+import ItalicSelector from './ItalicSelector';
 
 function Designer(props) {
    
@@ -20,6 +21,11 @@ function Designer(props) {
             <SizeSelector 
             selectedSize={props.selectedSize} 
             onSelectedSizeChange={props.onSelectedSizeChange} 
+            />
+
+            <ItalicSelector 
+            isSelectedItalic={props.isSelectedItalic}
+            onSelectedItalicChange={props.onSelectedItalicChange}
             />
 
         </div>
