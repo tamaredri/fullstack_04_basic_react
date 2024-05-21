@@ -2,6 +2,7 @@ import React from 'react';
 import SizeSelector from './SizeSelector';
 import ColorSelector from './ColorSelector';
 import FontSelector from './FontSelector';
+import BoldSelector from './BoldSelector';
 import ItalicSelector from './ItalicSelector';
 
 function Designer(props) {
@@ -23,11 +24,15 @@ function Designer(props) {
             onSelectedSizeChange={props.onSelectedSizeChange} 
             />
 
+            <BoldSelector
+            isBold={props.isBold}
+            onBoldChange={props.onBoldChange}
+            />
+            
             <ItalicSelector 
             isSelectedItalic={props.isSelectedItalic}
             onSelectedItalicChange={props.onSelectedItalicChange}
             />
-
         </div>
         
     )
