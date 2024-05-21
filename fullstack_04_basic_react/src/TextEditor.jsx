@@ -11,7 +11,7 @@ function TextEditor(){
     const [selectedFont, setSelectedFont] = useState('Ariel'); 
     const [selectedSize, setSelectedSize] = useState(16); 
     const [isBoldSelected, setIsBoldSelected] = useState(false);
-    const [isSelectedItalic ,setSelectedItalic] = useState(false);
+    const [isSelectedItalic, setSelectedItalic] = useState(false);
 
     const [text, setText] = useState([]);
     function keyPressedHandler(event){
@@ -20,7 +20,8 @@ function TextEditor(){
           color: selectedColor, 
           font: selectedFont, 
           size:`${selectedSize}px`,
-          fontWeight: isBoldSelected ? 'bold' : 'normal'
+          fontWeight: isBoldSelected ? 'bold' : 'normal',
+          fontStyle: isSelectedItalic ? 'italic' : 'normal'
         };
 
        
@@ -47,7 +48,7 @@ function TextEditor(){
         <Designer selectedColor={selectedColor} onSelectedColorChange={setSelectedColor}
                   selectedFont={selectedFont} onSelectedFontChange ={setSelectedFont}
                   onSelectedSizeChange={setSelectedSize} selectedSize={selectedSize} 
-                  isBold={isBoldSelected} onBoldChange={setIsBoldSelected}/>
+                  isBold={isBoldSelected} onBoldChange={setIsBoldSelected}
                   isSelectedItalic={isSelectedItalic} onSelectedItalicChange={setSelectedItalic} />
       </>
     )

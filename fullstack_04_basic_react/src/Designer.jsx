@@ -30,7 +30,7 @@ function Designer(props) {
             />
             
             <ItalicSelector 
-            isSelectedItalic={props.isSelectedItalic}
+            isItalic={props.isSelectedItalic}
             onSelectedItalicChange={props.onSelectedItalicChange}
             />
         </div>
