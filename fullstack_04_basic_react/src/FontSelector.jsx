@@ -1,4 +1,5 @@
 import React from 'react'
+import classes from './Designer.module.css';
 
 function FontSelector(props) {
 
@@ -8,8 +9,8 @@ function FontSelector(props) {
    
    
     return (
-          <div>
-            <select
+          <div className={classes.Selector}>
+            <select className={classes.FontSelector}
             value={props.selectedFont} 
             onChange={handleFontChange}>
                 <option value="Arial">Arial</option>

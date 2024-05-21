@@ -1,12 +1,14 @@
 import React from 'react';
+import classes from './Designer.module.css';
 
 function BoldSelector(props) {
+    
     function handleBoldChange() {
         props.onBoldChange(f => !f);
     }
 
     return (
-        <div>
+        <div className={classes.Selector}>
             <button 
             onClick={handleBoldChange} 
             style={props.isBold? {fontWeight: 'bold'} : {}}>

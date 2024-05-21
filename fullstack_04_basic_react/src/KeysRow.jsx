@@ -1,11 +1,12 @@
 import React from 'react';
 import Character from './Charachter';
+import classes from './KeyBoard.module.css';
 
 function KeysRow(props){
 
 
     return (
-        <li>
+        <li className={classes.KeyRow}>
             {props.keys.map((k, index) => 
             <Character key={index} 
                         char={k} 

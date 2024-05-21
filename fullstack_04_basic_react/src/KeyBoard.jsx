@@ -1,5 +1,6 @@
 import React from 'react';
 import KeysRow from './KeysRow';
+import classes from './KeyBoard.module.css';
 
 function KeyBoard(props){
     const hebrew = [['ק', 'ר', 'א', 'ט', 'ו', 'ן', 'ם', 'פ'], 
@@ -20,7 +21,7 @@ function KeyBoard(props){
 
     return (
         <>
-            <ul>
+            <ul className={classes.KeyBoard}>
                 {props.lang === 'english' ? english.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>):
                 (props.lang === 'עברית'? hebrew.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>) :
                 special.map((l, index) => <KeysRow key={index} keys={l} onKeyPressed={props.onKeyPressed}/>))}

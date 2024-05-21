@@ -1,15 +1,15 @@
 import React from "react";
+import classes from './Designer.module.css';
 
 
 function ItalicSelector(props) {
     
-
     function handleItalicChange() {
         props.onSelectedItalicChange(f => !f);
     }
 
     return (
-        <div>
+        <div className={classes.Selector}>
             <button 
             onClick={handleItalicChange} 
             style={props.isItalic? {fontStyle: 'italic'} : {}}>

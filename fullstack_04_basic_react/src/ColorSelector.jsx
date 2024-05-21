@@ -1,4 +1,5 @@
 import React from 'react'
+import classes from './Designer.module.css';
 
 function ColorSelector(props) {
 
@@ -8,7 +9,7 @@ function ColorSelector(props) {
    
    
     return (
-        <div>
+        <div className={classes.Selector}>
             <input
                 type="color"
                 value={props.selectedColor}

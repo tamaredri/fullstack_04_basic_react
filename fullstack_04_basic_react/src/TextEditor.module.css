@@ -1,0 +1,12 @@
+.TextEditoeContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.TextArea{
+    height: 10em;
+    margin: auto;
+    width: 50em;
+    overflow-y: auto;
+}

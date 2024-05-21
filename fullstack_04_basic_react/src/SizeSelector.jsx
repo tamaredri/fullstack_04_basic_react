@@ -1,6 +1,7 @@
+import classes from './Designer.module.css';
+
 function SizeSelector(props) {
     
-
     function plusClickHandle(){
         props.onSelectedSizeChange(f => f + 2);
     }
@@ -9,12 +10,13 @@ function SizeSelector(props) {
     }
 
     return (
-        <div>
-            <button onClick={plusClickHandle}>+</button>
+        <div className={`${classes.SizeChange} ${classes.Selector}`}>
+            <button className={classes.SizeChangeBtn} onClick={plusClickHandle}>+</button>
             <input type="number" 
             value={props.selectedSize} 
+            className={classes.SizeChangeBtn}
             readOnly min="10"/>
-            <button onClick={minusClickHandle}>-</button>
+            <button className={classes.SizeChangeBtn} onClick={minusClickHandle}>-</button>
         </div>
     )
 }

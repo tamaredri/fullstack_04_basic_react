@@ -2,6 +2,7 @@ import {useState} from 'react';
 import KeyBoard from './KeyBoard';
 import TextArea from './TextArea';
 import Designer from './Designer';
+import classes from './TextEditor.module.css';
 
 function TextEditor(){
     const [languageId, setLanguageId] = useState(0);   
@@ -39,7 +40,7 @@ function TextEditor(){
     }  
     
     return (
-      <>
+      <div className={classes.TextEditoeContainer}>
         <TextArea newChar={text}/>
 
         <button onClick={handleLangClick}>{languages[(languageId+1)%3]}</button>
@@ -50,7 +51,7 @@ function TextEditor(){
                   onSelectedSizeChange={setSelectedSize} selectedSize={selectedSize} 
                   isBold={isBoldSelected} onBoldChange={setIsBoldSelected}
                   isSelectedItalic={isSelectedItalic} onSelectedItalicChange={setSelectedItalic} />
-      </>
+      </div>
     )
 }
 

@@ -4,11 +4,12 @@ import ColorSelector from './ColorSelector';
 import FontSelector from './FontSelector';
 import BoldSelector from './BoldSelector';
 import ItalicSelector from './ItalicSelector';
+import classes from './Designer.module.css';
 
 function Designer(props) {
    
     return (
-        <div>
+        <div className={classes.Designer}>
             <FontSelector 
             selectedFont={props.selectedFont} 
             onSelectedFontChange={props.onSelectedFontChange}
