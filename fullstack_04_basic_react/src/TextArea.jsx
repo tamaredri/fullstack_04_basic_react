@@ -4,7 +4,7 @@ function TextArea(props) {
         <div>
             {props.newChar.map((c, index) => c.letter=== '↩'? 
                 <br/> :
-                <span key={index} style={{color:c.color, fontFamily: c.font, fontSize: c.size}}>
+                <span key={index} style={{color:c.color, fontFamily: c.font, fontSize: c.size,  fontWeight: c.fontWeight}}>
                     {c.letter === '—' ? ' ' : c.letter}
                 </span>)}
         </div>

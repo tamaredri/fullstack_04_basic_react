@@ -16,7 +16,7 @@ function KeyBoard(props){
 
     const emoji = [[],[],[]];
 
-    const actions = [['↩', '—', '←']];
+    const actions = [['↩', '—', '←', '🚮']];
 
     return (
         <>

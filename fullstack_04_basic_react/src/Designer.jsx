@@ -2,6 +2,7 @@ import React from 'react';
 import SizeSelector from './SizeSelector';
 import ColorSelector from './ColorSelector';
 import FontSelector from './FontSelector';
+import BoldSelector from './BoldSelector';
 
 function Designer(props) {
    
@@ -20,6 +21,11 @@ function Designer(props) {
             <SizeSelector 
             selectedSize={props.selectedSize} 
             onSelectedSizeChange={props.onSelectedSizeChange} 
+            />
+
+            <BoldSelector
+             isBold={props.isBold}
+             onBoldChange={props.onBoldChange}
             />
 
         </div>
