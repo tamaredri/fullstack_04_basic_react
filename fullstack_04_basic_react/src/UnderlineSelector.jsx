@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from './Designer.module.css';
 
 function UnderlineSelector(props) {
 
@@ -7,7 +8,7 @@ function UnderlineSelector(props) {
     }
 
     return (
-        <div>
+        <div className={classes.Selector}>
             <button 
             onClick={handleUnderlineChange} 
             style={props.isUnderline? {textDecoration: 'underline' } : {}}>

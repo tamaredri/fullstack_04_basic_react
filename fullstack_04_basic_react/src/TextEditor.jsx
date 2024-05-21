@@ -83,9 +83,7 @@ function TextEditor(){
                   selectedFont={selectedFont} onSelectedFontChange ={setSelectedFont}
                   onSelectedSizeChange={setSelectedSize} selectedSize={selectedSize} 
                   isBold={isBoldSelected} onBoldChange={setIsBoldSelected}
-                  isSelectedItalic={isSelectedItalic} onSelectedItalicChange={setSelectedItalic} />
-     
-                  isSelectedItalic={isSelectedItalic} onSelectedItalicChange={setSelectedItalic} 
+                  isSelectedItalic={isSelectedItalic} onSelectedItalicChange={setSelectedItalic}
                   isUnderlineSelected ={isUnderlineSelected} onSelectedUnderlineChange={setSelectedUnderline}  />
         </div>
       
