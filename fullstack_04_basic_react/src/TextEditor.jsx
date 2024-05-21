@@ -29,9 +29,23 @@ function TextEditor(){
        
         if(val.letter === '←'){
             setText(t => t.slice(0, -1));
-        } else if(val.letter === '🚮'){
+        } else if(val.letter === '🗑'){
           setText([]);
-        } else{
+        } 
+        else if(val.letter === '🧹'){
+          setText(t => t.map(char => ({ letter: char.letter, color: selectedColor, font: selectedFont, 
+            size:`${selectedSize}px`,
+            fontWeight: isBoldSelected ? 'bold' : 'normal',
+            fontStyle: isSelectedItalic ? 'italic' : 'normal',
+            textDecoration: isUnderlineSelected ? 'underline' : 'none'})));
+        }
+       else if(val.letter === '⬆'){
+        setText(t => t.map(char => ({ ...char, letter: char.letter.toUpperCase() })));
+      } 
+      else if(val.letter === '⬇'){
+        setText(t => t.map(char => ({ ...char, letter: char.letter.toLowerCase() })));
+      } 
+        else{
             setText(t => [...t, val]);
         }
     }
@@ -39,12 +53,14 @@ function TextEditor(){
     function handleLangClick(){
       setLanguageId(currentId => (currentId + 1 ) % 3);
     }  
-    
+
+
     return (
       <>
         <TextArea newChar={text}/>
 
         <button onClick={handleLangClick}>{languages[(languageId+1)%3]}</button>
+       
         <KeyBoard lang={languages[languageId]} onKeyPressed={keyPressedHandler}/>
 
         <Designer selectedColor={selectedColor} onSelectedColorChange={setSelectedColor}
@@ -54,6 +70,7 @@ function TextEditor(){
                   isSelectedItalic={isSelectedItalic} onSelectedItalicChange={setSelectedItalic} 
                   isUnderlineSelected ={isUnderlineSelected} onSelectedUnderlineChange={setSelectedUnderline}  />
       </>
+      
     )
 }
 
