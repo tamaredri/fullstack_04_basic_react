@@ -5,7 +5,7 @@ import Designer from './Designer';
 
 function TextEditor(){
     const [languageId, setLanguageId] = useState(0);   
-    const languages = ['english', 'עברית', '.?123'];
+    const languages = ['english', 'עברית', '.?123', '😀'];
     
     const [selectedColor, setSelectedColor] = useState('#000000'); 
     const [selectedFont, setSelectedFont] = useState('Ariel'); 
@@ -51,7 +51,7 @@ function TextEditor(){
     }
   
     function handleLangClick(){
-      setLanguageId(currentId => (currentId + 1 ) % 3);
+      setLanguageId(currentId => (currentId + 1 ) % 4);
     }  
 
 
@@ -59,7 +59,7 @@ function TextEditor(){
       <>
         <TextArea newChar={text}/>
 
-        <button onClick={handleLangClick}>{languages[(languageId+1)%3]}</button>
+        <button onClick={handleLangClick}>{languages[(languageId+1) % 4]}</button>
        
         <KeyBoard lang={languages[languageId]} onKeyPressed={keyPressedHandler}/>
 
