@@ -4,23 +4,16 @@ import Game100 from './Game100Components/Game100';
 
 
 function App() {
-  const [currentComponent, setCurrentComponent] = useState('TextEditor');
-  let users =[ {
-     username: 'User1', randomNumber: 10, steps: 1 }];
-  
-     console.log("Current Component:", currentComponent);
-     console.log("Users:", users);
-     
-   {currentComponent === 'TextEditor' && <TextEditor/>}
+ 
+    const [currentComponent, setCurrentComponent] = useState('TextEditor');
+    //  {currentComponent === 'TextEditor' && <TextEditor/>}
 
-    {currentComponent === 'Game100' && <Game100 users={users}/>}
+    //   {currentComponent === 'Game100' && <Game100 users={users}/>}
 
-
-  
   return (
 
 
-    <Game100 users={users}/>
+    <Game100 />
 
     // <TextEditor />
     // <div>
