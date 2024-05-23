@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import TextEditor from './TextEditorComponents/TextEditor'
 import Game100 from './Game100Components/Game100';
+import Login from './Game100Components/Login';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   return (
 
 
-    <Game100 />
+    <Login />
 
     // <TextEditor />
     // <div>
