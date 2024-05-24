@@ -3,18 +3,18 @@ import { useState } from 'react';
 
 const SingleGameBoard = (props) => {
     const isWinning = props.user.number === 100;
-
-    if(isWinning){
-        props.onWinning(props.user);
-    }
     
     function setStep() {
         props.user.steps += 1;
         props.onStep(props.user);
+        if(props.user.number === 100){
+            console.log(props.user.username, props.user.steps);
+            props.onWinning(props.user.username, props.user.steps);
+        }
     }
 
     function plus(){
-        props.user.number = props.user.number + 1;
+        props.user.number += 1;
         setStep();
     }
     function minus(){
@@ -26,7 +26,7 @@ const SingleGameBoard = (props) => {
         setStep();
     }
     function divide(){
-        props.user.number /= 2;
+        props.user.number = Math.floor(props.user.number / 2);
         setStep();
     }
 
@@ -37,8 +37,8 @@ const SingleGameBoard = (props) => {
             {isWinning ?
                 <>
                     <p>steps: {props.user.steps}</p>
-                    <button onClick={() => setRandomNumber(Math.floor(Math.random() * 100))}>Start again</button>  
-                    <button onClick={() => props.onQuit(props.user.username)}>Quit</button>  
+                    <button onClick={() => {props.onGameRestart(props.user.username)}}>Start again</button>  
+                    <button onClick={() => {props.onQuit(props.user.username)}}>Quit</button>  
                 </>
                 :
                 <>
@@ -49,6 +49,7 @@ const SingleGameBoard = (props) => {
                     <p>steps: {props.user.steps}</p>
                     <p>{props.user.username}'s scores: {props.user.fullSteps.join(', ')}</p>
                 </>} 
+                
         </div>
 
     );

@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Registration from './Registration';
 import FullGameBoard from './FullGameBoard';
 
-const Game100 = (props) => {
-    let isStartPlay = true;
-    // let users = [{ username: 'User 1', steps: [2, 5, 7] },
-    // { username: 'User 2', steps: [9, 7, 9] }]
+const Game100 = () => {
+    const [isStartPlay, setIsStartPlay] = useState(false);
+    const [activeUsers, setActiveUsers] = useState([]);
 
     return (<>
     {/* <></> - add the top 3 palyers (according to steps avarage */}
     
-        {isStartPlay ? <FullGameBoard registeredUsers={props.users} /> :
-            <Registration />}
+        {isStartPlay ? <FullGameBoard registeredUsers={activeUsers} /> :
+            <Registration 
+            activeUsers={activeUsers}
+            onActiveUsersChange={setActiveUsers} 
+            onRegistrationDone={setIsStartPlay} />}
     </>)
 }
 

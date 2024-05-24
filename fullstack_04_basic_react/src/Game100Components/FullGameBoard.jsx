@@ -3,16 +3,28 @@ import { useState } from 'react';
 import SingleGameBoard from './SingleGameBoard';
 
 const FullGameBoard = (props) => {
-    const [users, setUsers] = useState(props.registeredUsers.map(u => ({
-        username: 'User1', number: Math.floor(Math.random() * 100), steps: 0, fullSteps: u.steps
-    })));
+    const [playingUsers, setPlayingUsers] = useState(loadPlayers());
 
+    function newUser(user){
+        return ({
+            username: user.username,
+            number: Math.floor(Math.random() * 100),
+            steps: 0,
+            fullSteps: user.steps
+        });
+    }
+
+    function loadPlayers() {
+        let users = JSON.parse(localStorage.getItem('Game100')) || [];
+        return props.registeredUsers.map(username => {
+            let user = users.find(storedUser => storedUser.username === username);
+            return newUser(user);
+        });
+    }
     // add an isActive prop to mark the player with the active board - using an index
 
-
-
-    function handleStep(user){
-        setUsers(lastUsers => {
+    function handleStep(user) {
+        setPlayingUsers(lastUsers => {
             let userIndex = lastUsers.findIndex(u => u.username === user.username);
             const updatedUsers = [...lastUsers];
             updatedUsers[userIndex] = user;
@@ -20,34 +32,52 @@ const FullGameBoard = (props) => {
         });
     }
 
-    function handleWinning(username){
-        /**
-         * store the user data - steps list - to the local storage
-         */
+    function handleWinning(username, step) {
+        const users = JSON.parse(localStorage.getItem('Game100')) || [];
+        const winningUserIndex = users.findIndex(storedUser => storedUser.username === username);
+
+        const updatedUsers = [...users];
+        updatedUsers[winningUserIndex] = {
+            username: username, 
+            steps: [...users[winningUserIndex].steps, step]
+        };
+
+        localStorage.setItem('Game100', JSON.stringify(updatedUsers));
 
     }
 
-    function handleQuit(username){
-        setUsers(lastUsers => lastUsers.filter(u => u.username !== username));
+    function handleQuit(username) {
+        setPlayingUsers(lastUsers => lastUsers.filter(u => u.username !== username));
     }
 
-    function handleRestart(User){
-        /**
-         * 1. access local storage and add the current step to local storage
-         * 2. setUsers of the current user to a clean json object
-         */
+    function handleGameRestart(username) {
+        console.log('in game restart');
+        setPlayingUsers(u => {
+            return u.map(oldUser => {
+                if( oldUser.username !== username){
+                    return oldUser;
+                }
+
+                console.log(oldUser.username, 'reseting game')
+                
+                const users = JSON.parse(localStorage.getItem('Game100')) || [];
+                let storedUser = users.find(storedUser => storedUser.username === username);
+                return newUser(storedUser);
+            })
+        });
     }
 
 
     return (
         <div>
-            {users.map((c, index) => (
+            {playingUsers.map((c, index) => (
                 <SingleGameBoard
                     key={index}
                     user={c}
                     onQuit={handleQuit}
                     onStep={handleStep}
                     onWinning={handleWinning}
+                    onGameRestart={handleGameRestart}
                 />
             ))}
         </div>
