@@ -8,8 +8,10 @@ const SingleGameBoard = (props) => {
         props.user.steps += 1;
         props.onStep(props.user);
         if(props.user.number === 100){
-            console.log(props.user.username, props.user.steps);
             props.onWinning(props.user.username, props.user.steps);
+        }
+        else{
+            props.onFinishedPlaying();
         }
     }
 
@@ -33,6 +35,8 @@ const SingleGameBoard = (props) => {
     return (
         <div style={{ border: '3px solid black', padding: '15px', width: '400px', textAlign: 'center' }}>
             <p>Username: {props.user.username}</p>
+            {props.isActive && <p>your turn</p>}
+
             <p>{props.user.number}</p>
             {isWinning ?
                 <>
@@ -42,10 +46,10 @@ const SingleGameBoard = (props) => {
                 </>
                 :
                 <>
-                    <button onClick={plus}>+1</button>
-                    <button onClick={minus}>-1</button>
-                    <button onClick={multiply}>x2</button>
-                    <button onClick={divide}>/2</button>
+                    <button disabled={!props.isActive} onClick={plus}>+1</button>
+                    <button disabled={!props.isActive} onClick={minus}>-1</button>
+                    <button disabled={!props.isActive} onClick={multiply}>x2</button>
+                    <button disabled={!props.isActive} onClick={divide}>/2</button>
                     <p>steps: {props.user.steps}</p>
                     <p>{props.user.username}'s scores: {props.user.fullSteps.join(', ')}</p>
                 </>} 

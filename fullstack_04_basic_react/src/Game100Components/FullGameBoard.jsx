@@ -4,6 +4,7 @@ import SingleGameBoard from './SingleGameBoard';
 
 const FullGameBoard = (props) => {
     const [playingUsers, setPlayingUsers] = useState(loadPlayers());
+    const [activePlayer, setActivePlayer] = useState(0);
 
     function newUser(user){
         return ({
@@ -21,6 +22,7 @@ const FullGameBoard = (props) => {
             return newUser(user);
         });
     }
+
     // add an isActive prop to mark the player with the active board - using an index
 
     function handleStep(user) {
@@ -30,6 +32,7 @@ const FullGameBoard = (props) => {
             updatedUsers[userIndex] = user;
             return updatedUsers;
         });
+
     }
 
     function handleWinning(username, step) {
@@ -43,18 +46,17 @@ const FullGameBoard = (props) => {
         };
 
         localStorage.setItem('Game100', JSON.stringify(updatedUsers));
-
     }
 
     function handleQuit(username) {
         setPlayingUsers(lastUsers => lastUsers.filter(u => u.username !== username));
+        setActivePlayer(a => (a) % (playingUsers.length - 1));
     }
 
     function handleGameRestart(username) {
-        console.log('in game restart');
         setPlayingUsers(u => {
             return u.map(oldUser => {
-                if( oldUser.username !== username){
+                if(oldUser.username !== username){
                     return oldUser;
                 }
 
@@ -65,21 +67,27 @@ const FullGameBoard = (props) => {
                 return newUser(storedUser);
             })
         });
+        setActivePlayer(a => (a + 1) % (playingUsers.length));
     }
 
 
     return (
         <div>
-            {playingUsers.map((c, index) => (
+            {playingUsers.map((c, index) => {
+                return (
                 <SingleGameBoard
                     key={index}
                     user={c}
+                    isActive={index === activePlayer}
                     onQuit={handleQuit}
                     onStep={handleStep}
+                    onFinishedPlaying={() =>         
+                        setActivePlayer(a => (a + 1) % (playingUsers.length))
+                    }
                     onWinning={handleWinning}
                     onGameRestart={handleGameRestart}
                 />
-            ))}
+            )})}
         </div>
     );
 }
