@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Game100 from './Game100';
+// let users = JSON.parse(localStorage.getItem('users')) || [];
 
 const Login = () => {
 
@@ -11,8 +12,11 @@ const Login = () => {
 
 
     //to check
-    const users = ['user1', 'user2', 'user3'];
-    localStorage.setItem('registeredUsers', JSON.stringify(users));
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    const ourUsers = [{ username: 'User1', steps: [2, 5, 7] },
+    { username: 'User2', steps: [9, 7, 9] }]
+    localStorage.setItem('ourUsers', JSON.stringify(users));
+    
 
     const handleChange = (e) => {
         setNameUser(e.target.value);
@@ -21,9 +25,11 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+        //username=e.target.value;
+        //const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+        const user = users.find(user => user.username === nameUser);
 
-        if (registeredUsers.includes(nameUser)) {
+        if (user) {
             setMessage('Signed up successfully');
             setSuccessfulUsers([...successfulUsers, nameUser]);
         } else {
