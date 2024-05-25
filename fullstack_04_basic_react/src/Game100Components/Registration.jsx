@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { act } from 'react';
 import { useState } from 'react';
-import Login from './Login';
-import Signp from './Signp';
+import classes from './modules_css/Registration.module.css';
+import PlayersList from './PlayersList';
+import Login from './Login.jsx';
+
 
 
 const Registration = (props) => {
@@ -71,27 +73,11 @@ const Registration = (props) => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    User name:
-                    <input type="text" name="username" />
-                </label>
+        <>
+            <Login onSubmit={handleSubmit} message={message}/>
 
-                <br></br>
-
-                <button type="submit">Login</button>
-                <button type="submit">Signup</button>
-            </form>
-            {message && <p>{message}</p>}
-
-
-            <p>Playing users:</p>
-            <div>
-                {props.activeUsers.map((u, index) => <p key={index}>{u}</p>)}
-            </div>
-            <button onClick={handleStartGame}>Start Game</button>
-        </div>
+            <PlayersList users={props.activeUsers} onStartGame={handleStartGame}/>
+        </>
     );
 }
 

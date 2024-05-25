@@ -1,0 +1,54 @@
+
+.flexConteiner{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.flexConteiner p{
+    display: block;
+    font-weight: bold;
+}
+
+.flexConteiner button{
+    width: 45%;
+}
+
+.flexConteiner form{
+    padding: 0px;
+}
+
+.signinDiv{
+    margin-top: 20px;;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.inputDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.inputDiv label{
+    margin-right: 10px;
+}
+
+.inputDiv input{
+    width: 60%;
+    border: transparent;
+    height: 2em;
+    padding: 3px;
+}
+
+.playersList{
+    height: 7rem;
+    width: 100%;
+    margin: 10px 0px;
+    padding: 5px 20px;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+    border: 1px solid;
+    overflow-y: auto;
+}

@@ -1,0 +1,20 @@
+.navigationBtn{
+    font-size: 50px;
+    background: transparent;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    
+    transition: border-color 0.25s;
+    margin: 20px;
+}
+.navigationBtn:hover {
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    border-color: transparent;
+}
+
+.homeBtn{
+    font-size: 25px;
+}
+
+.container{
+    margin-top: 30px;
+}

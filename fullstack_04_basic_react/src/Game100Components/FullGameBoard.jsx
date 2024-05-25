@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import SingleGameBoard from './SingleGameBoard';
+import classes from './modules_css/GameBoard.module.css';
 
 const FullGameBoard = (props) => {
     const [playingUsers, setPlayingUsers] = useState(loadPlayers());

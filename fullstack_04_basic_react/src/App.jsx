@@ -1,53 +1,40 @@
 import { useState } from 'react'
 import TextEditor from './TextEditorComponents/TextEditor'
 import Game100 from './Game100Components/Game100';
+import classes from './App.module.css';
 
 
 function App() {
+  const [currentComponent, setCurrentComponent] = useState('Game100');
 
-  const [currentComponent, setCurrentComponent] = useState('Select');
-  //  {currentComponent === 'TextEditor' && <TextEditor/>}
-
-  //   {currentComponent === 'Game100' && <Game100 users={users}/>}\
-  let show = false;
   return (
 
     <>
 
       {currentComponent === 'Select' &&
-        <>
-          <button onClick={() => setCurrentComponent('TextEditor')}>⌨️</button>
-          <button onClick={() => setCurrentComponent('Game100')}>💯</button>
-        </>
+        <div className={classes.container}>
+          <button className={classes.navigationBtn} onClick={() => setCurrentComponent('TextEditor')}>⌨️</button>
+          <button className={classes.navigationBtn} onClick={() => setCurrentComponent('Game100')}>💯</button>
+        </div>
       }
 
       {currentComponent === 'TextEditor' &&
-        <>
-          <button onClick={() => setCurrentComponent('Select')}>🏠</button>
+        <div className={classes.container}>
+          <button  className={[classes.navigationBtn, classes.homeBtn].join(' ')} onClick={() => setCurrentComponent('Select')}>🏠</button>
           <TextEditor />
-        </>
+        </div>
       }
-
 
       {
         currentComponent === 'Game100' &&
-        <>
-          <button onClick={() => setCurrentComponent('Select')}>🏠</button>
+        <div className={classes.container}>
+          <button  className={[classes.navigationBtn, classes.homeBtn].join(' ')} onClick={() => setCurrentComponent('Select')}>🏠</button>
           <Game100 />
-        </>
+        </div>
       }
-
 
     </>
 
-    // 
-    // <div>
-    //   <div>
-    //     <button onClick={() => setCurrentComponent('TextEditor')}>Text Editor</button>
-    //     <button onClick={() => setCurrentComponent('Game100')}>GameBoard</button>
-    //   </div>
-
-    // </div>
   )
 }
 
