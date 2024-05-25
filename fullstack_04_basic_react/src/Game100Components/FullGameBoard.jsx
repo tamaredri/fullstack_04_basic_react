@@ -23,8 +23,6 @@ const FullGameBoard = (props) => {
         });
     }
 
-    // add an isActive prop to mark the player with the active board - using an index
-
     function handleStep(user) {
         setPlayingUsers(lastUsers => {
             let userIndex = lastUsers.findIndex(u => u.username === user.username);
@@ -35,14 +33,14 @@ const FullGameBoard = (props) => {
 
     }
 
-    function handleWinning(username, step) {
+    function handleWinning(username, newNumberOfSteps) {
         const users = JSON.parse(localStorage.getItem('Game100')) || [];
         const winningUserIndex = users.findIndex(storedUser => storedUser.username === username);
 
         const updatedUsers = [...users];
         updatedUsers[winningUserIndex] = {
             username: username, 
-            steps: [...users[winningUserIndex].steps, step]
+            steps: [...users[winningUserIndex].steps, newNumberOfSteps]
         };
 
         localStorage.setItem('Game100', JSON.stringify(updatedUsers));
@@ -60,8 +58,6 @@ const FullGameBoard = (props) => {
                     return oldUser;
                 }
 
-                console.log(oldUser.username, 'reseting game')
-                
                 const users = JSON.parse(localStorage.getItem('Game100')) || [];
                 let storedUser = users.find(storedUser => storedUser.username === username);
                 return newUser(storedUser);
