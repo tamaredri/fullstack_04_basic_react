@@ -5,7 +5,7 @@ import classes from './App.module.css';
 
 
 function App() {
-  const [currentComponent, setCurrentComponent] = useState('Game100');
+  const [currentComponent, setCurrentComponent] = useState('Select');
 
   return (
 
