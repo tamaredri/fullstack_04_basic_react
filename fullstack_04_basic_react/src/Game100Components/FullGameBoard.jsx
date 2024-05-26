@@ -45,6 +45,7 @@ const FullGameBoard = (props) => {
         };
 
         localStorage.setItem('Game100', JSON.stringify(updatedUsers));
+        props.onTop3Change();
     }
 
     function handleQuit(username) {

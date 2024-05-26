@@ -2,23 +2,44 @@ import React, { useState } from 'react';
 import Registration from './Registration';
 import FullGameBoard from './FullGameBoard';
 import classes from './modules_css/Game100.module.css';
+import TopThree from './TopThree';
 
 const Game100 = () => {
     const [isStartPlay, setIsStartPlay] = useState(false);
     const [activeUsers, setActiveUsers] = useState([]);
-    
-    const [top3, setTop3] = useState(false);
+    const [topPlayers, setTopPlayers] = useState(loadTopPlayers());
+
+
+    function loadTopPlayers() {
+        let users = JSON.parse(localStorage.getItem('Game100')) || [];
+        return activeUsers.map(username => {
+            let user = users.find(storedUser => storedUser.username === username);
+            return ({username: user.username,
+                    avrSteps: calculateAverage(user.steps) }) ;
+        }).filter(user => user.avrSteps > 0).sort((a, b) => a.avrSteps - b.avrSteps).slice(0, 3);
+    }
+
+    function calculateAverage(steps) {
+        const sum = steps.reduce((acc, curr) => acc + curr, 0);
+        return Math.ceil(sum / steps.length);
+    }
+
 
     return (<div className={classes.container}>
         {isStartPlay ? <>
-            {/* add here top 3 - add a way to rerender the list once a user finishes his game */}
-            <FullGameBoard registeredUsers={activeUsers} />
+            <TopThree topPlayers={topPlayers}/>
+            <FullGameBoard registeredUsers={activeUsers} onTop3Change={()=>setTopPlayers(loadTopPlayers())}/>
         </>
             :
             <Registration
                 activeUsers={activeUsers}
                 onActiveUsersChange={setActiveUsers}
-                onRegistrationDone={setIsStartPlay} />}
+                onRegistrationDone={() => {
+                    setTopPlayers(loadTopPlayers());
+                    setIsStartPlay(true);
+                }}
+                
+            />}
     </div>)
 }
 

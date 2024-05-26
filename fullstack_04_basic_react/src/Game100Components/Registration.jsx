@@ -64,8 +64,7 @@ const Registration = (props) => {
 
     const handleStartGame = () => {
         if (props.activeUsers.length > 0) {
-            /** maybe check if the user inside the  */
-            props.onRegistrationDone(true);
+            props.onRegistrationDone();   
         }
         else {
             setMessage('No users have registered');
