@@ -1,6 +1,92 @@
-.flexConteiner{
-    margin-top: 30px;
+.container{
+    width: 600px;
+}
+
+.flexConteiner {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    flex-direction: row;
+}
+
+.userBoard{
+    border: 1px #F8F9D7 solid;
+    background-color: #B3C8CF;
+    border-radius: 15px;
+    width: 30%;
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.inactive{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(204, 204, 204, 0.5); /* Transparent gray */
+    z-index: 1;
+
+}
+
+.userBoard p{
+    font-size: 1em;
+    color: #2a2062;
+    margin:10px;
+}
+
+.gameActions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 130px;
+    width: 160px;
+    margin: 10px;
+}
+
+
+.button {
+    position: absolute;
+    height: 40px;
+    width: 50px;
+    background-color: #F1EEDC;
+    
+}
+
+.left {
+    top: 35%;
+    left: 0;
+}
+
+.right {
+    top: 35%;
+    right: 0;
+}
+
+.top {
+    top: 0;
+    left: 35%;
+}
+
+.bottom {
+    bottom: 0;
+    right: 35%;
+}
+
+.centered {
+    z-index: 1;
+}
+
+.winnerOptions{
+    background-color: #FDFFC2;
+    margin: 15px;
+}
+
+.winnerDiv{
+    display: flex;
+    align-items: center;
     flex-direction: column;
 }

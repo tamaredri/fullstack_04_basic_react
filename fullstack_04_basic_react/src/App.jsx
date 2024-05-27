@@ -8,9 +8,7 @@ function App() {
   const [currentComponent, setCurrentComponent] = useState('Select');
 
   return (
-
     <>
-
       {currentComponent === 'Select' &&
         <div className={classes.container}>
           <button className={classes.navigationBtn} onClick={() => setCurrentComponent('TextEditor')}>⌨️</button>

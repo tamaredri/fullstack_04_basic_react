@@ -70,7 +70,7 @@ const FullGameBoard = (props) => {
 
 
     return (
-        <div>
+        <div className={[classes.flexConteiner, classes.container].join(' ')}>
             {playingUsers.map((c, index) => {
                 return (
                 <SingleGameBoard
